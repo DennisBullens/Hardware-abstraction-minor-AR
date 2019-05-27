@@ -1,14 +1,17 @@
 <launch>
 
+    <arg name="portDevA" default="0" />
+    <arg name="portDevB" default="1" />
+
     <node pkg="hardware_abstraction" type="mainProgramTask2.py" name="mainProgram" output="screen" />    
 
     <node pkg="rosserial_python" type="serial_node.py" name="deviceA" output="screen">
-        <param name="port" value="/dev/ttyACM1" />
+        <param name="port" value="/dev/ttyACM0" />
         <param name="baud" value="9600" />
     </node>
 
     <node pkg="rosserial_python" type="serial_node.py" name="deviceB" output="screen">
-        <param name="port" value="/dev/ttyACM2" />
+        <param name="port" value="/dev/ttyACM1" />
         <param name="baud" value="9600" />
     </node> 
 
