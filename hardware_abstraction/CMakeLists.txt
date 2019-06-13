@@ -12,8 +12,6 @@ find_package(catkin REQUIRED COMPONENTS
   rospy
   std_msgs
   message_generation
-  actionlib
-  genmsg
   actionlib_msgs
 )
 
@@ -54,6 +52,7 @@ find_package(catkin REQUIRED COMPONENTS
 add_message_files(
   FILES
   control_msgs.msg
+  task3DevA.msg
   task3DevB.msg
 )
 
@@ -64,12 +63,10 @@ add_service_files(
   control_srvs_dev_b.srv
 )
 
-## Generate actions in the 'action' folder
+## Generate actions in the 'action' folder  DIRECTORY action
 add_action_files(
-  DIRECTORY action
   FILES
-  actionDevA.action
-  actionDevB.action
+  actionTask3.action
 )
 
 
@@ -79,13 +76,13 @@ generate_messages(
   std_msgs
   actionlib_msgs
 )
-
-catkin_package(
-  CATKIN_DEPENDS 
-  actionlib_msgs 
-  message_runtime
-
-)
+##
+##catkin_package(
+##  CATKIN_DEPENDS 
+##  actionlib_msgs 
+##  message_runtime
+##
+##)
 
 ################################################
 ## Declare ROS dynamic reconfigure parameters ##
@@ -118,9 +115,10 @@ catkin_package(
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
 #  INCLUDE_DIRS include
-#  LIBRARIES hardware_abstraction
-#  CATKIN_DEPENDS roscpp rospy std_msgs
-#  DEPENDS system_lib
+  LIBRARIES hardware_abstraction
+  CATKIN_DEPENDS roscpp rospy std_msgs actionlib_msgs
+  DEPENDS system_lib
+  DEPENDS message_runtime
 )
 
 ###########

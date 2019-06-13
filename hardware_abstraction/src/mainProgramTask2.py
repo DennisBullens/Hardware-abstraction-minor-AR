@@ -15,7 +15,7 @@ class callbacks():
     def handle_values_dev_a(self, request):
         self.resultA = control_srvs_dev_aResponse()
         self.potVal = request.potentioMeterValue
-        #print "Value of potentiometer: %s" %(self.potVal)    
+  
         if self.potVal > 920:
             self.resultA.ledDevA = True
             self.lastStateLedA = True
@@ -27,9 +27,10 @@ class callbacks():
             self.resultA.ledDevA = False
             self.lastStateLedA = False
         
-        #print self.resultA
-        #print self.lastStateLedA
-        #print "\n*****"
+        print "RESULTS OF DEVICE A:"
+        print "Value of potentiometer: %s" %(self.potVal)          
+        print self.resultA
+        print "\n*****"
         return self.resultA
 
     def handle_values_dev_b(self, request):
@@ -52,9 +53,9 @@ class callbacks():
                 self.resultB.servoVal = 0
                 self.lastServoVal = 0
             
-            #print self.resultB
-            #print self.lastStateLedB
-            #print "\n*****"
+            print "RESULTS OF DEVICE B:"
+            print self.resultB
+            print "\n*****"
         else:
             self.resultB.ledValB = False
             self.resultB.servoVal = 0.0
@@ -66,7 +67,6 @@ if __name__ == "__main__":
         callBacks = callbacks()
         serviceDevA = rospy.Service("/control_srv_dev_a", control_srvs_dev_a, callBacks.handle_values_dev_a)
         serviceDevB = rospy.Service("/control_srv_dev_b", control_srvs_dev_b, callBacks.handle_values_dev_b)
-        #rospy.wait_for_service("/control_srv")
         print "INITIALIZING DONE"
         rospy.spin()
 
