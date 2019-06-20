@@ -1,0 +1,4 @@
+uint16 potentioMeterValue
+---
+bool ledDevA
+
