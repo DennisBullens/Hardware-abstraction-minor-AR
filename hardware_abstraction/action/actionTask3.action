@@ -1,8 +1,0 @@
-#goal definition
-uint16 setPoint
----
-#result definition
-bool maximumReached
----
-#feedback
-float32 currentValuePrecent
