@@ -31,4 +31,4 @@ For task 3 the abstraction is different then the previous tasks.
 **Device B** exists only of a **servo** which is controlled by the arduino.
 The purpose of task 3 is to control the **servo** with the ros action library.
 Since we couldn't use a action library in arduino, the arduino communicates with a python file thanks to subscribing and publishing to this python node.
-In the client is a line to fill in the desired angle in the terminal. When you press enter after you have filled in the angle it waits till you press ENTER again. After this the servo will go to the desired angle.
+In the client is a line to fill in the desired angle in the terminal. When you press enter after you have filled in the angle it waits till you press ENTER again. After this the **servo** will go to the desired angle.
